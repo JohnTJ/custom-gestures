@@ -10,42 +10,46 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var startingPlace: UIView!
-    @IBOutlet var endingPlace: UIView!
-    
     var myGesture: MyCustomGesture!
+    
+    var doubleTapDone = false
+    var swipeDownDone = false
+    var secretGestureDone = false
+    
+    @IBOutlet var tapView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startingPlace.backgroundColor = UIColor.clear
-        endingPlace.backgroundColor = UIColor.clear
+        let doubleTapRecognizer: UITapGestureRecognizer = {
+            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+            tapRecognizer.numberOfTapsRequired = 2
+            tapRecognizer.numberOfTouchesRequired = 2
+            return tapRecognizer
+        }()
         
-        myGesture = MyCustomGesture(target: self, action: #selector(gestureAction))
-        view.addGestureRecognizer(myGesture)
+        tapView.addGestureRecognizer(doubleTapRecognizer)
+        
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
+        downSwipe.direction = UISwipeGestureRecognizer.Direction.down
+        downSwipe.numberOfTouchesRequired = 2
+        tapView.addGestureRecognizer(downSwipe)
+        
     }
     
+    @objc func didDoubleTap() {
+        doubleTapDone = true
+    }
     
-    /// Gesture Action that detects if the gesture starts and ends in the two frames
-    @objc func gestureAction() {
-        let startEndAngle = atan2(endingPlace.center.y - startingPlace.center.y, endingPlace.center.x - startingPlace.center.x)
-        let tolerance: CGFloat = 0.2
-        
-        if (myGesture.state == UIGestureRecognizer.State.ended) {
-            let angleDifference = abs(myGesture.angle - startEndAngle)
-            let yLimit = startingPlace.center.y + (startingPlace.frame.size.height / 2)
-            let minStartX = startingPlace.center.x - (startingPlace.frame.size.width / 2)
-            let maxStartX = startingPlace.center.x + (startingPlace.frame.size.width / 2)
-            let minEndX = endingPlace.center.x - (startingPlace.frame.size.width / 2)
-            let maxEndX = endingPlace.center.x + (startingPlace.frame.size.width / 2)
-
-            if (angleDifference < tolerance && myGesture.startingPoint.y <= yLimit && myGesture.startingPoint.x < maxStartX && myGesture.endingPoint.x > minEndX && myGesture.startingPoint.x > minStartX && myGesture.endingPoint.x < maxEndX) {
-                print("Yes")
-                presentDebugViewController()
-            } else {
-                print("No")
-            }
+    @objc func swipeAction(swipe: UISwipeGestureRecognizer) {
+        switch swipe.direction {
+        case .down:
+            print("Swipe Down!")
+            secretGestureDone = true
+        default:
+            break
         }
+        
     }
     
     /// Presents Debug View Controller
@@ -80,4 +84,5 @@ class MyCustomGesture: UIGestureRecognizer {
         angle = atan2(endingPoint.y - startingPoint.y, endingPoint.x - startingPoint.x)
         print(angle)
     }
+    
 }
