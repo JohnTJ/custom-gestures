@@ -13,8 +13,21 @@ class ViewController: UIViewController {
     var myGesture: MyCustomGesture!
     
     var doubleTapDone = false
-    var swipeDownDone = false
-    var secretGestureDone = false
+    var swipeDownDone = false {
+        didSet {
+            if (true && doubleTapDone) {
+                secretGestureDone = true
+            }
+        }
+    }
+    
+    var secretGestureDone = false {
+        didSet {
+            if (true) {
+                presentDebugViewController()
+            }
+        }
+    }
     
     @IBOutlet var tapView: UIView!
     
@@ -38,6 +51,7 @@ class ViewController: UIViewController {
     }
     
     @objc func didDoubleTap() {
+        print("double tap")
         doubleTapDone = true
     }
     
