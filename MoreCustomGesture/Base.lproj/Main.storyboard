@@ -82,10 +82,19 @@
                                     <action selector="exitAction:" destination="biG-0M-1lo" eventType="touchUpInside" id="rI9-ly-oCc"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="debug" translatesAutoresizingMaskIntoConstraints="NO" id="btO-zs-JaM">
+                                <rect key="frame" x="107" y="348" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="GSP-y3-nL2"/>
+                                    <constraint firstAttribute="width" constant="200" id="Hj9-ey-gff"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RDP-hX-lMN" firstAttribute="leading" secondItem="6RK-jq-xFL" secondAttribute="leading" constant="20" id="RYS-vF-yg9"/>
+                            <constraint firstItem="btO-zs-JaM" firstAttribute="centerX" secondItem="0o0-B4-FKB" secondAttribute="centerX" id="Xfb-M9-lvg"/>
+                            <constraint firstItem="btO-zs-JaM" firstAttribute="centerY" secondItem="0o0-B4-FKB" secondAttribute="centerY" id="amb-Eg-acw"/>
                             <constraint firstItem="6RK-jq-xFL" firstAttribute="trailing" secondItem="Z5a-0v-fWv" secondAttribute="trailing" constant="20" id="avi-dj-OPb"/>
                             <constraint firstItem="Z5a-0v-fWv" firstAttribute="bottom" secondItem="6RK-jq-xFL" secondAttribute="bottom" id="ec7-tQ-mZh"/>
                             <constraint firstItem="Z5a-0v-fWv" firstAttribute="leading" secondItem="6RK-jq-xFL" secondAttribute="leading" constant="20" id="lx6-zc-Xei"/>
@@ -100,4 +109,7 @@
             <point key="canvasLocation" x="566.66666666666674" y="113.83928571428571"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="debug" width="512" height="512"/>
+    </resources>
 </document>
