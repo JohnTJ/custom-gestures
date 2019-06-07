@@ -13,6 +13,7 @@ class DebugViewController: UIViewController {
     
     @IBAction func exitAction(_ sender: Any) {
         let homeViewController:UIViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! ViewController
+        
         self.present(homeViewController, animated: true)
     }
     

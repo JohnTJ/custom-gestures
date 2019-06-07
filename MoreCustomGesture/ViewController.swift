@@ -10,21 +10,17 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var myGesture: MyCustomGesture!
-    
-    var doubleTapDone = false
-    var swipeDownDone = false {
+    var validSwipe = true
+    var timer = Timer()
+    var timePassed = 0.0 {
         didSet {
-            if (true && doubleTapDone) {
-                secretGestureDone = true
-            }
-        }
-    }
-    
-    var secretGestureDone = false {
-        didSet {
-            if (true) {
-                presentDebugViewController()
+            if (timePassed > 0.2) {
+                print("timer resetting")
+                timePassed = 0
+                timer.invalidate()
+                validSwipe = false
+            } else {
+                validSwipe = true
             }
         }
     }
@@ -34,36 +30,39 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let doubleTapRecognizer: UITapGestureRecognizer = {
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
-            tapRecognizer.numberOfTapsRequired = 2
-            tapRecognizer.numberOfTouchesRequired = 2
-            return tapRecognizer
-        }()
-        
-        tapView.addGestureRecognizer(doubleTapRecognizer)
+        let doubleTapRecongizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+        doubleTapRecongizer.numberOfTouchesRequired = 2
+        doubleTapRecongizer.numberOfTapsRequired = 2
+        tapView.addGestureRecognizer(doubleTapRecongizer)
         
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeAction(swipe:)))
         downSwipe.direction = UISwipeGestureRecognizer.Direction.down
         downSwipe.numberOfTouchesRequired = 2
         tapView.addGestureRecognizer(downSwipe)
-        
+
+    }
+    
+    @objc func addTimePassed() {
+        timePassed += 0.1
+        print("Time passed: \(timePassed)")
+    }
+    
+    func runTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(addTimePassed), userInfo: nil, repeats: true)
+        timer.fire()
     }
     
     @objc func didDoubleTap() {
         print("double tap")
-        doubleTapDone = true
+        runTimer()
     }
     
     @objc func swipeAction(swipe: UISwipeGestureRecognizer) {
-        switch swipe.direction {
-        case .down:
-            print("Swipe Down!")
-            secretGestureDone = true
-        default:
-            break
+        if (validSwipe) {
+            presentDebugViewController()
+        } else {
+            print("invalid swipe")
         }
-        
     }
     
     /// Presents Debug View Controller
@@ -71,32 +70,4 @@ class ViewController: UIViewController {
         let debugViewController:UIViewController = storyboard?.instantiateViewController(withIdentifier: "DebugViewController") as! DebugViewController
         self.present(debugViewController, animated: true)
     }
-}
-
-
-/// Custom Gesture class that holds angle, starting point, and ending point
-class MyCustomGesture: UIGestureRecognizer {
-    
-    var angle: CGFloat = 0.0
-    var startingPoint: CGPoint!
-    var endingPoint: CGPoint!
-
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        state = UIGestureRecognizer.State.began
-        startingPoint = touches.first?.location(in: view)
-        angle = 0.0
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
-        
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
-        state = UIGestureRecognizer.State.ended
-        endingPoint = touches.first?.location(in: view)
-        angle = atan2(endingPoint.y - startingPoint.y, endingPoint.x - startingPoint.x)
-        print(angle)
-    }
-    
 }
