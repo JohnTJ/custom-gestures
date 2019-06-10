@@ -30,6 +30,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        validSwipe = false
+        
         let doubleTapRecongizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
         doubleTapRecongizer.numberOfTouchesRequired = 2
         doubleTapRecongizer.numberOfTapsRequired = 2
