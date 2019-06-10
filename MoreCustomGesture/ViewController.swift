@@ -10,27 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var validSwipe = true
-    var timer = Timer()
-    var timePassed = 0.0 {
-        didSet {
-            if (timePassed > 0.2) {
-                print("timer resetting")
-                timePassed = 0
-                timer.invalidate()
-                validSwipe = false
-            } else {
-                validSwipe = true
-            }
-        }
-    }
+    var tapNow: Date?
     
     @IBOutlet var tapView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        validSwipe = false
         
         let doubleTapRecongizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
         doubleTapRecongizer.numberOfTouchesRequired = 2
@@ -44,26 +29,15 @@ class ViewController: UIViewController {
 
     }
     
-    @objc func addTimePassed() {
-        timePassed += 0.1
-        print("Time passed: \(timePassed)")
-    }
-    
-    func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(addTimePassed), userInfo: nil, repeats: true)
-        timer.fire()
-    }
-    
     @objc func didDoubleTap() {
         print("double tap")
-        runTimer()
+        tapNow = Date()
+        print(tapNow!)
     }
     
     @objc func swipeAction(swipe: UISwipeGestureRecognizer) {
-        if (validSwipe) {
+        if tapNow != nil && tapNow!.timeIntervalSinceNow > -0.2 {
             presentDebugViewController()
-        } else {
-            print("invalid swipe")
         }
     }
     
