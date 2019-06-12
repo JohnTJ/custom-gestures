@@ -15,7 +15,11 @@
 		AF81F23C22A9646400B01987 /* MoreCustomGestureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81F23B22A9646400B01987 /* MoreCustomGestureTests.swift */; };
 		AF81F24722A9646400B01987 /* MoreCustomGestureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81F24622A9646400B01987 /* MoreCustomGestureUITests.swift */; };
 		AF81F25522A96B1F00B01987 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81F25422A96B1F00B01987 /* DebugViewController.swift */; };
-		AFF7CD9422AEA9A000C41C65 /* gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9322AEA9A000C41C65 /* gestures.swift */; };
+		AFF7CD9422AEA9A000C41C65 /* GesturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9322AEA9A000C41C65 /* GesturesView.swift */; };
+		AFF7CD9622B13A0900C41C65 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9522B13A0900C41C65 /* Coordinator.swift */; };
+		AFF7CD9822B13A4C00C41C65 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9722B13A4C00C41C65 /* MainCoordinator.swift */; };
+		AFF7CD9A22B13AB600C41C65 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9922B13AB600C41C65 /* Storyboarded.swift */; };
+		AFF7CD9C22B13EF500C41C65 /* GestureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF7CD9B22B13EF500C41C65 /* GestureDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +54,11 @@
 		AF81F24622A9646400B01987 /* MoreCustomGestureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreCustomGestureUITests.swift; sourceTree = "<group>"; };
 		AF81F24822A9646400B01987 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF81F25422A96B1F00B01987 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
-		AFF7CD9322AEA9A000C41C65 /* gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gestures.swift; sourceTree = "<group>"; };
+		AFF7CD9322AEA9A000C41C65 /* GesturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GesturesView.swift; sourceTree = "<group>"; };
+		AFF7CD9522B13A0900C41C65 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		AFF7CD9722B13A4C00C41C65 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		AFF7CD9922B13AB600C41C65 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		AFF7CD9B22B13EF500C41C65 /* GestureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +111,11 @@
 			children = (
 				AF81F22622A9646300B01987 /* AppDelegate.swift */,
 				AF81F22822A9646300B01987 /* ViewController.swift */,
-				AFF7CD9322AEA9A000C41C65 /* gestures.swift */,
+				AFF7CD9322AEA9A000C41C65 /* GesturesView.swift */,
+				AFF7CD9522B13A0900C41C65 /* Coordinator.swift */,
+				AFF7CD9B22B13EF500C41C65 /* GestureDelegate.swift */,
+				AFF7CD9922B13AB600C41C65 /* Storyboarded.swift */,
+				AFF7CD9722B13A4C00C41C65 /* MainCoordinator.swift */,
 				AF81F25422A96B1F00B01987 /* DebugViewController.swift */,
 				AF81F22A22A9646300B01987 /* Main.storyboard */,
 				AF81F22D22A9646400B01987 /* Assets.xcassets */,
@@ -263,9 +275,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF81F25522A96B1F00B01987 /* DebugViewController.swift in Sources */,
+				AFF7CD9822B13A4C00C41C65 /* MainCoordinator.swift in Sources */,
+				AFF7CD9C22B13EF500C41C65 /* GestureDelegate.swift in Sources */,
 				AF81F22922A9646300B01987 /* ViewController.swift in Sources */,
+				AFF7CD9622B13A0900C41C65 /* Coordinator.swift in Sources */,
 				AF81F22722A9646300B01987 /* AppDelegate.swift in Sources */,
-				AFF7CD9422AEA9A000C41C65 /* gestures.swift in Sources */,
+				AFF7CD9422AEA9A000C41C65 /* GesturesView.swift in Sources */,
+				AFF7CD9A22B13AB600C41C65 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
