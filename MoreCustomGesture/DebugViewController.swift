@@ -11,11 +11,4 @@ import UIKit
 class DebugViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
-
-    @IBAction func exitAction(_ sender: Any) {
-        let homeViewController:UIViewController = storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! ViewController
-        
-        self.present(homeViewController, animated: true)
-    }
-    
 }

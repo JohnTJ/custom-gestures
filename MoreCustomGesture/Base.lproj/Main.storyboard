@@ -44,16 +44,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5a-0v-fWv">
-                                <rect key="frame" x="20" y="832" width="374" height="30"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Exit Debug Screen">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="exitAction:" destination="biG-0M-1lo" eventType="touchUpInside" id="rI9-ly-oCc"/>
-                                </connections>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="debug" translatesAutoresizingMaskIntoConstraints="NO" id="K3G-0s-RC3">
                                 <rect key="frame" x="107" y="348" width="200" height="200"/>
                                 <constraints>
@@ -67,9 +57,6 @@
                             <constraint firstItem="K3G-0s-RC3" firstAttribute="centerY" secondItem="0o0-B4-FKB" secondAttribute="centerY" id="2Ze-O3-YFo"/>
                             <constraint firstItem="K3G-0s-RC3" firstAttribute="centerX" secondItem="0o0-B4-FKB" secondAttribute="centerX" id="3hD-vz-jPG"/>
                             <constraint firstItem="RDP-hX-lMN" firstAttribute="leading" secondItem="6RK-jq-xFL" secondAttribute="leading" constant="20" id="RYS-vF-yg9"/>
-                            <constraint firstItem="6RK-jq-xFL" firstAttribute="trailing" secondItem="Z5a-0v-fWv" secondAttribute="trailing" constant="20" id="avi-dj-OPb"/>
-                            <constraint firstItem="Z5a-0v-fWv" firstAttribute="bottom" secondItem="6RK-jq-xFL" secondAttribute="bottom" id="ec7-tQ-mZh"/>
-                            <constraint firstItem="Z5a-0v-fWv" firstAttribute="leading" secondItem="6RK-jq-xFL" secondAttribute="leading" constant="20" id="lx6-zc-Xei"/>
                             <constraint firstItem="6RK-jq-xFL" firstAttribute="trailing" secondItem="RDP-hX-lMN" secondAttribute="trailing" constant="20" id="nsp-NF-KnJ"/>
                             <constraint firstItem="RDP-hX-lMN" firstAttribute="top" secondItem="6RK-jq-xFL" secondAttribute="top" id="od8-m8-A9S"/>
                         </constraints>

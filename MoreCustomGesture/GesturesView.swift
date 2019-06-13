@@ -12,8 +12,6 @@ import UIKit
 class GesturesView: UIView {
     
     var tapNow: Date?
-//    let doubleTapRecongizer: UITapGestureRecognizer
-//    let downSwipe: UISwipeGestureRecognizer
     var canPresentDebugScreen = false
     var delegate: GestureDelegate?
     
@@ -22,7 +20,7 @@ class GesturesView: UIView {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         self.isUserInteractionEnabled = true
-        self.backgroundColor = .blue
+        self.backgroundColor = .cyan
         
         let doubleTapRecongizer = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
         doubleTapRecongizer.numberOfTouchesRequired = 1
@@ -47,8 +45,10 @@ class GesturesView: UIView {
     }
     
     @objc func swipeAction(swipe: UISwipeGestureRecognizer) {
+        print("swiping")
         if tapNow!.timeIntervalSinceNow > -0.2 {
             // Tell delegate that we're ready to go
+            print("valid swipe")
             self.delegate!.gesturesCompleted()
         }
     }

@@ -14,8 +14,19 @@ class ViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        let tapView: GesturesView = GesturesView(frame: frame)
+        let tapView: GesturesView = GesturesView(frame: .zero)
+        view.addSubview(tapView)
+        
+        let topConstraint = tapView.topAnchor.constraint(equalTo: view.topAnchor)
+        let leadingConstraint = tapView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+        let bottomConstraint = tapView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        let trailingConstraint = tapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        
+        topConstraint.isActive = true
+        leadingConstraint.isActive = true
+        bottomConstraint.isActive = true
+        trailingConstraint.isActive = true
+        
         tapView.delegate = self
     }
 }
